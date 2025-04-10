@@ -1,10 +1,4 @@
-
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun, AlignmentType } from "docx";
 
@@ -132,51 +126,47 @@ export default function OfficialLetterGenerator() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <Card>
-        <CardContent className="space-y-4">
-          <h2 className="text-xl font-bold">Official Letter Generator</h2>
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="day">Day</Label>
-              <Input id="day" name="day" value={formData.day} onChange={handleChange} />
-            </div>
-            <div>
-              <Label htmlFor="month">Month</Label>
-              <Input id="month" name="month" value={formData.month} onChange={handleChange} />
-            </div>
-            <div>
-              <Label htmlFor="year">Year</Label>
-              <Input id="year" name="year" value={formData.year} onChange={handleChange} />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="docNumber">Document Number</Label>
-            <Input id="docNumber" name="docNumber" value={formData.docNumber} onChange={handleChange} />
-          </div>
-          <div>
-            <Label htmlFor="recipientPosition">Recipient Position</Label>
-            <Input id="recipientPosition" name="recipientPosition" value={formData.recipientPosition} onChange={handleChange} />
-          </div>
-          <div>
-            <Label htmlFor="recipientName">Recipient Name</Label>
-            <Input id="recipientName" name="recipientName" value={formData.recipientName} onChange={handleChange} />
-          </div>
-          <div>
-            <Label htmlFor="letterBody">Letter Body</Label>
-            <Textarea id="letterBody" name="letterBody" rows={8} value={formData.letterBody} onChange={handleChange} />
-          </div>
-          <div>
-            <Label htmlFor="senderPosition">Sender Position</Label>
-            <Input id="senderPosition" name="senderPosition" value={formData.senderPosition} onChange={handleChange} />
-          </div>
-          <div>
-            <Label htmlFor="senderName">Sender Name</Label>
-            <Input id="senderName" name="senderName" value={formData.senderName} onChange={handleChange} />
-          </div>
-          <Button onClick={generateDocx}>Generate .docx Letter</Button>
-        </CardContent>
-      </Card>
+    <div style={{ maxWidth: "768px", margin: "0 auto", padding: "24px" }}>
+      <h2 style={{ fontSize: "20px", fontWeight: "bold" }}>Official Letter Generator</h2>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+        <div>
+          <label>Day</label>
+          <input name="day" value={formData.day} onChange={handleChange} />
+        </div>
+        <div>
+          <label>Month</label>
+          <input name="month" value={formData.month} onChange={handleChange} />
+        </div>
+        <div>
+          <label>Year</label>
+          <input name="year" value={formData.year} onChange={handleChange} />
+        </div>
+      </div>
+      <div>
+        <label>Document Number</label>
+        <input name="docNumber" value={formData.docNumber} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Recipient Position</label>
+        <input name="recipientPosition" value={formData.recipientPosition} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Recipient Name</label>
+        <input name="recipientName" value={formData.recipientName} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Letter Body</label>
+        <textarea name="letterBody" rows={8} value={formData.letterBody} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Sender Position</label>
+        <input name="senderPosition" value={formData.senderPosition} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Sender Name</label>
+        <input name="senderName" value={formData.senderName} onChange={handleChange} />
+      </div>
+      <button onClick={generateDocx}>Generate .docx Letter</button>
     </div>
   );
 }
